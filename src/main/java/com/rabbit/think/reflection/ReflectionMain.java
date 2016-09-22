@@ -1,6 +1,10 @@
 package com.rabbit.think.reflection;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Date;
+
+import com.alibaba.fastjson.JSONObject;
 
 /**
  * 这里联系一下java反射
@@ -17,7 +21,11 @@ public class ReflectionMain {
 		Date date = (Date)clazz.newInstance();
 		System.out.println(date.getTime());
 		
-		// 2. 反射二，
+		// 2. 反射二，各种反射方法
+		Field[] fields = clazz.getDeclaredFields();
+		System.out.println(JSONObject.toJSONString(fields));
+		Method method = clazz.getMethod("getTime", null);
+		System.out.println(JSONObject.toJSONString(method));
 	}
 
 }
