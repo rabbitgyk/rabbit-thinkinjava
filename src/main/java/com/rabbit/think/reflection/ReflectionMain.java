@@ -16,7 +16,7 @@ public class ReflectionMain {
 	public static void main(String[] args) throws Exception{
 		// 1. 反射一，初始化类
 		String s = "java.util.Date";
-		Class clazz = Class.forName(s);
+		Class<? extends Object> clazz = Class.forName(s);
 		
 		Date date = (Date)clazz.newInstance();
 		System.out.println(date.getTime());
@@ -24,7 +24,7 @@ public class ReflectionMain {
 		// 2. 反射二，各种反射方法
 		Field[] fields = clazz.getDeclaredFields();
 		System.out.println(JSONObject.toJSONString(fields));
-		Method method = clazz.getMethod("getTime", null);
+		Method method = clazz.getMethod("getTime");
 		System.out.println(JSONObject.toJSONString(method));
 	}
 
