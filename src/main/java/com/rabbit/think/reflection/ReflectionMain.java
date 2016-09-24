@@ -18,8 +18,11 @@ public class ReflectionMain {
 		String s = "java.util.Date";
 		Class<? extends Object> clazz = Class.forName(s);
 		
-		Date date = (Date)clazz.newInstance();
-		System.out.println(date.getTime());
+		Object object = clazz.newInstance();
+		// 注：强转之前 最好做个类型校验
+		if(object instanceof Date){
+			System.out.println(((Date)object).getTime());
+		}
 		
 		// 2. 反射二，各种反射方法
 		Field[] fields = clazz.getDeclaredFields();
