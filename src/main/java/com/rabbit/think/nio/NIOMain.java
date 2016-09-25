@@ -21,6 +21,8 @@ public class NIOMain {
 		FileWatcher.watch(path);
 		
 		// 2. 选择器和异步IO：通过选择器来提高多路复用 
+		// 一旦这个程序运行成功，启动一个简单的telnet或者其他的终端模拟器来连接8005和8006接口。
+		// 你会看到这个程序会回显它接收到的所有字符——并且它是通过一个Java线程来实现的。
 		int[] ports = {8005, 8006};
 		try {
 			new MultiPortEcho(ports);
