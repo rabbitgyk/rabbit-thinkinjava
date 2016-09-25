@@ -1,6 +1,11 @@
 package com.rabbit.think.nio;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetEncoder;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -34,5 +39,15 @@ public class NIOMain {
 		// 4.内存映射——好钢用在刀刃上 
 		String file = "E:\\logs\\a.txt";
 		new MemoryMapping().map(file);
+		
+		// 5. 字符编码和搜索
+		String some_string = "This is a string that Java natively stores as Unicode.";
+		Charset latin1_charset = Charset.forName("ISO-8859-1");
+		CharsetEncoder latin1_encoder = latin1_charset.newEncoder();
+		try {
+			ByteBuffer latin1_bbuf = latin1_encoder.encode(CharBuffer.wrap(some_string));
+		} catch (CharacterCodingException e) {
+			e.printStackTrace();
+		}
 	}
 }
