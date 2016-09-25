@@ -2,7 +2,6 @@ package com.rabbit.think.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -34,7 +33,7 @@ public class MultiPortEcho {
 		}
 
 		while (true) {
-			int num = selector.select();
+			selector.select();
 			Set<SelectionKey> selectedKeys = selector.selectedKeys();
 			Iterator<SelectionKey> it = selectedKeys.iterator();
 			while (it.hasNext()) {
@@ -45,7 +44,7 @@ public class MultiPortEcho {
 					SocketChannel sc = ssc.accept();
 					sc.configureBlocking(false);
 					// Add the new connection to the selector
-					SelectionKey newKey = sc.register(selector, SelectionKey.OP_READ);
+					sc.register(selector, SelectionKey.OP_READ);
 					it.remove();
 					System.out.println("Got connection from " + sc);
 				} else if ((key.readyOps() & SelectionKey.OP_READ) == SelectionKey.OP_READ) {
