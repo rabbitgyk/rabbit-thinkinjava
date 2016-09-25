@@ -1,5 +1,6 @@
 package com.rabbit.think.nio;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -19,5 +20,12 @@ public class NIOMain {
 		Path path = Paths.get("E:\\logs");
 		FileWatcher.watch(path);
 		
+		// 2. 选择器和异步IO：通过选择器来提高多路复用 
+		int[] ports = {8005, 8006};
+		try {
+			new MultiPortEcho(ports);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
