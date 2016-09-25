@@ -10,7 +10,11 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
 
-
+/**
+ * http://www.importnew.com/2000.html
+ * @author rabbit
+ * 2016年9月25日
+ */
 public class MultiPortEcho {
 	private int ports[];
 	private ByteBuffer echoBuffer = ByteBuffer.allocate(1024);

@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
+ * http://www.importnew.com/2000.html
  * 1. 变更通知（因为每个事件都需要一个监听者） 
  * 2. 选择器和异步IO：通过选择器来提高多路复用 
  * 3. 通道——承诺与现实
@@ -29,5 +30,9 @@ public class NIOMain {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		// 4.内存映射——好钢用在刀刃上 
+		String file = "E:\\logs\\a.txt";
+		new MemoryMapping().map(file);
 	}
 }

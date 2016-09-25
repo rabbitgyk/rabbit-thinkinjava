@@ -8,6 +8,7 @@ import java.nio.file.WatchService;
 import java.util.List;
 
 /**
+ * http://www.importnew.com/2000.html
  * 变更通知（因为每个事件都需要一个监听者）
  * 
  * @author rabbit 2016年9月25日
