@@ -9,7 +9,10 @@ public class MainTest {
 
 	public static void main(String[] args) throws RunnerException {
 		Options opt = new OptionsBuilder()
-				.include(JMHSample.class.getSimpleName()).forks(1).build();
+				.include(JMHSample.class.getSimpleName())
+				.warmupIterations(10)
+				.measurementIterations(10)
+				.forks(1).build();
 		new Runner(opt).run();
 	}
 }
